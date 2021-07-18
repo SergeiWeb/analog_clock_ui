@@ -1,0 +1,419 @@
+//* Variables
+:root {
+	//* Colors
+	--hue-color: 240; // Blue 240 - Green 154 - Orange 25 - Pink 335
+
+	--first-color: hsl(var(--hue-color), 53%, 49%);
+	--title-color: hsl(var(--hue-color), 53%, 15%);
+	--text-color: hsl(var(--hue-color), 12%, 35%);
+	--text-color-light: hsl(var(--hue-color), 12%, 65%);
+	--white-color: #ffffff;
+	--body-color: hsl(var(--hue-color), 24%, 94%);
+
+	//* Font and typography
+	--body-font: 'Poppins', sans-serif;
+	--biggest-font-size: 3rem;
+	--small-font-size: 0.813rem;
+	--smaller-font-size: 0.75rem;
+	--tiny-font-size: 0.625rem;
+
+	@media screen and (min-width: 968px) {
+		//* Font and typography
+		--biggest-font-size: 3.5rem;
+		--small-font-size: 0.875rem;
+		--smaller-font-size: 0.813rem;
+		--tiny-font-size: 0.75rem;
+	}
+
+	//* Font weight
+	--font-medium: 500;
+
+	//* Margenes Bottom
+	--mb-0-25: 0.25rem;
+	--mb-1: 1rem;
+	--mb-1-5: 1.5rem;
+	--mb-2-5: 2.5rem;
+
+	//* Z index
+	--z-normal: 1;
+	--z-tooltip: 10;
+}
+
+//* Variables Dark theme
+body.dark-theme {
+	--title-color: hsl(var(--hue-color), 12%, 95%);
+	--text-color: hsl(var(--hue-color), 12%, 75%);
+	--body-color: hsl(var(--hue-color), 10%, 16%);
+}
+
+//* Button Dark/Light
+.clock {
+	&__theme {
+		position: absolute;
+		top: -1rem;
+		right: -1rem;
+		display: flex;
+		padding: 0.25rem;
+		border-radius: 50%;
+		box-shadow: inset -1px -1px 1px hsla(var(--hue-color), 0%, 100%, 1),
+			inset 1px 1px 1px hsla(var(--hue-color), 30%, 86%, 1);
+		color: var(--first-color);
+	}
+	&__colors {
+		position: absolute;
+		top: -1rem;
+		right: -5rem;
+		display: flex;
+		font-size: 1.5em;
+		padding: 0.25rem;
+		border-radius: 50%;
+		box-shadow: inset -1px -1px 1px hsla(var(--hue-color), 0%, 100%, 1),
+			inset 1px 1px 1px hsla(var(--hue-color), 30%, 86%, 1);
+		color: var(--first-color);
+	}
+}
+
+//* Box shadow Dark theme
+.dark-theme {
+	.clock {
+		&__circle {
+			box-shadow: 6px 6px 16px hsla(var(--hue-color), 8%, 12%, 1),
+				-6px -6px 16px hsla(var(--hue-color), 8%, 20%, 1),
+				inset -6px -6px 16px hsla(var(--hue-color), 8%, 20%, 1),
+				inset 6px 6px 12px hsla(var(--hue-color), 8%, 12%, 1);
+		}
+
+		&__theme,
+		&__colors {
+			box-shadow: inset -1px -1px 1px hsla(var(--hue-color), 8%, 20%, 1),
+				inset 1px 1px 1px hsla(var(--hue-color), 8%, 12%, 1);
+		}
+	}
+
+	.colors {
+		&__button {
+			box-shadow: inset -1px -1px 1px hsla(var(--hue-color), 8%, 20%, 1),
+				inset 1px 1px 1px hsla(var(--hue-color), 8%, 12%, 1);
+		}
+	}
+}
+
+//* Base
+*,
+::before,
+::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: var(--body-font);
+	background-color: var(--body-color);
+	color: var(--text-color);
+	&.blue {
+		--hue-color: 240;
+	}
+	&.green {
+		--hue-color: 154;
+	}
+	&.orange {
+		--hue-color: 25;
+	}
+	&.pink {
+		--hue-color: 335;
+	}
+}
+
+a,
+span {
+	display: inline-block;
+}
+
+a {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+button {
+	all: unset;
+	cursor: pointer;
+}
+
+//* Reusable css classes
+.container {
+	max-width: 968px;
+	margin-left: var(--mb-1);
+	margin-right: var(--mb-1);
+}
+
+.grid {
+	display: grid;
+}
+
+//* Clock
+.clock {
+	&__container {
+		height: 100vh;
+		grid-template-rows: 1fr max-content;
+	}
+
+	&__circle {
+		position: relative;
+		width: 200px;
+		height: 200px;
+		box-shadow: -6px -6px 16px var(--white-color),
+			6px 6px 16px hsla(var(--hue-color), 30%, 86%, 1),
+			inset 6px 6px 16px hsla(var(--hue-color), 30%, 86%, 1),
+			inset -6px -6px 16px var(--white-color);
+		border-radius: 50%;
+		justify-self: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__content {
+		align-self: center;
+		row-gap: 3.5rem;
+	}
+
+	&__twelve,
+	&__three,
+	&__six,
+	&__nine {
+		position: absolute;
+		width: 1rem;
+		height: 1px;
+		background-color: var(--text-color-light);
+		border-radius: 0.25rem;
+	}
+
+	&__twelve,
+	&__six {
+		width: 1px;
+		height: 1rem;
+	}
+
+	&__twelve {
+		top: 0.75rem;
+		left: 50%;
+	}
+
+	&__three {
+		top: 50%;
+		right: 0.75rem;
+	}
+
+	&__six {
+		bottom: 0.75rem;
+		left: 50%;
+	}
+
+	&__nine {
+		left: 0.75rem;
+		top: 50%;
+	}
+
+	&__rounder {
+		width: 0.75rem;
+		height: 0.75rem;
+		background-color: var(--first-color);
+		border-radius: 50%;
+		border: 2px solid var(--body-color);
+		z-index: var(--z-tooltip);
+	}
+
+	&__hour,
+	&__minutes,
+	&__seconds {
+		position: absolute;
+		display: flex;
+		justify-content: center;
+
+		&::before {
+			content: '';
+			position: absolute;
+			border-radius: 0.75rem;
+			z-index: var(--z-normal);
+		}
+	}
+
+	&__hour {
+		width: 105px;
+		height: 105px;
+
+		&::before {
+			background-color: var(--text-color);
+			width: 0.25rem;
+			height: 3rem;
+		}
+	}
+	&__minutes {
+		width: 136px;
+		height: 136px;
+
+		&::before {
+			background-color: var(--text-color);
+			width: 0.25rem;
+			height: 4rem;
+		}
+	}
+	&__seconds {
+		width: 130px;
+		height: 130px;
+
+		&::before {
+			background-color: var(--first-color);
+			width: 0.125rem;
+			height: 5rem;
+		}
+	}
+
+	&__logo {
+		width: max-content;
+		justify-self: center;
+		margin-bottom: var(--mb-2-5);
+		font-size: var(--smaller-font-size);
+		font-weight: var(--font-medium);
+		color: var(--text-color-light);
+		transition: 0.3s;
+
+		&:hover {
+			color: var(--first-color);
+		}
+	}
+
+	&__text {
+		display: flex;
+		justify-content: center;
+
+		&-hour,
+		&-minutes,
+		&-ampm {
+			font-size: var(--biggest-font-size);
+			font-weight: var(--font-medium);
+			color: var(--title-color);
+		}
+
+		&-ampm {
+			font-size: var(--tiny-font-size);
+			color: var(--title-color);
+			font-weight: var(--font-medium);
+			margin-left: var(--mb-0-25);
+		}
+	}
+
+	&__date {
+		text-align: center;
+		font-size: var(--small-font-size);
+		font-weight: var(--font-medium);
+	}
+}
+
+.colors {
+	top: 1rem;
+	right: 1rem;
+	width: 150px;
+	display: grid;
+	position: fixed;
+	flex-direction: column;
+	transition: 0.3s;
+	transform: translateX(140%);
+	gap: 0.25rem;
+	&.open {
+		transform: translate(0);
+	}
+
+	&__button {
+		display: flex;
+		padding: 0.25rem;
+		text-align: center;
+		justify-content: center;
+		align-items: center;
+		border-radius: 0.25rem;
+		box-shadow: inset -1px -1px 1px hsla(var(--hue-color), 0%, 100%, 1),
+			inset 1px 1px 1px hsla(var(--hue-color), 30%, 86%, 1);
+		color: var(--first-color);
+	}
+}
+
+//* Media queries
+// For large devices
+@media screen and (min-width: 968px) {
+	.container {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.clock {
+		&__theme {
+			font-size: 1.5rem;
+		}
+
+		&__content {
+			grid-template-columns: repeat(2, 1fr);
+			align-items: center;
+		}
+
+		&__circle {
+			width: 350px;
+			height: 350px;
+		}
+
+		&__three,
+		&__nine {
+			width: 2rem;
+			height: 3px;
+		}
+
+		&__twelve,
+		&__six {
+			width: 3px;
+			height: 2rem;
+		}
+
+		&__rounder {
+			width: 1.25rem;
+			height: 1.25rem;
+		}
+
+		&__hour {
+			width: 150px;
+			height: 150px;
+
+			&::before {
+				background-color: var(--text-color);
+				width: 0.35rem;
+				height: 5rem;
+			}
+		}
+
+		&__minutes {
+			width: 250px;
+			height: 250px;
+
+			&::before {
+				background-color: var(--text-color);
+				width: 0.35rem;
+				height: 8rem;
+			}
+		}
+
+		&__seconds {
+			width: 250px;
+			height: 250px;
+
+			&::before {
+				width: 0.25rem;
+				height: 10rem;
+			}
+		}
+
+		&__logo {
+			margin-bottom: 3rem;
+			font-size: var(--small-font-size);
+		}
+	}
+}

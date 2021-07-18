@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Clock UI</title>
+
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!-- Icons -->
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+		/>
+
+		<!-- Styles -->
+		<link rel="stylesheet" href="./assets/css/normalize.css" />
+		<link rel="stylesheet" href="./assets/css/main.css" />
+
+		<!-- Scripts -->
+		<script src="./assets/js/main.js" defer></script>
+	</head>
+	<body>
+		<section class="clock container">
+			<div class="clock__container grid">
+				<div class="clock__content grid">
+					<div class="clock__circle">
+						<span class="clock__twelve"></span>
+						<span class="clock__three"></span>
+						<span class="clock__six"></span>
+						<span class="clock__nine"></span>
+
+						<div class="clock__rounder"></div>
+						<div class="clock__hour" id="clock-hour"></div>
+						<div class="clock__minutes" id="clock-minutes"></div>
+						<div class="clock__seconds" id="clock-seconds"></div>
+
+						<!-- Dark/Light button -->
+						<button class="clock__theme">
+							<i class="bx bxs-moon" id="theme-button"></i>
+						</button>
+						<button class="clock__colors" id="colors-button">
+							<i class="bx bx-color-fill"></i>
+						</button>
+					</div>
+					<!-- /.clock__circle -->
+
+					<div>
+						<div class="clock__text">
+							<div class="clock__text-hour" id="text-hour"></div>
+							<div class="clock__text-minutes" id="text-minutes"></div>
+							<div class="clock__text-ampm" id="text-ampm"></div>
+						</div>
+						<!-- /.clock__text -->
+						<div class="clock__date">
+							<span id="date-day"></span>
+							<span id="date-month"></span>
+							<span id="date-year"></span>
+						</div>
+						<!-- /.clock__date -->
+					</div>
+				</div>
+				<!-- /.clock__content grid -->
+
+				<a
+					href="www.instagram.com/mirror.web.agency"
+					target="_blank"
+					class="clock__logo"
+				>
+					Mirror Web Agency
+				</a>
+				<!-- /.clock__logo -->
+			</div>
+			<!-- /.clock__container grid -->
+		</section>
+		<!-- /.clock container -->
+
+		<section class="colors" id="colors-block">
+			<button class="colors__button" data-color="blue">Blue</button>
+			<button class="colors__button" data-color="green">Green</button>
+			<button class="colors__button" data-color="orange">Orange</button>
+			<button class="colors__button" data-color="pink">Pink</button>
+		</section>
+		<!-- /.colors -->
+	</body>
+</html>
