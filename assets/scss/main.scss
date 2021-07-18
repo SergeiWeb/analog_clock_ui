@@ -51,7 +51,7 @@ body.dark-theme {
 	&__theme {
 		position: absolute;
 		top: -1rem;
-		right: -1rem;
+		right: 0rem;
 		display: flex;
 		padding: 0.25rem;
 		border-radius: 50%;
@@ -62,9 +62,8 @@ body.dark-theme {
 	&__colors {
 		position: absolute;
 		top: -1rem;
-		right: -5rem;
+		right: -2rem;
 		display: flex;
-		font-size: 1.5em;
 		padding: 0.25rem;
 		border-radius: 50%;
 		box-shadow: inset -1px -1px 1px hsla(var(--hue-color), 0%, 100%, 1),
@@ -348,8 +347,16 @@ button {
 	}
 
 	.clock {
-		&__theme {
+		&__theme, &__colors {
 			font-size: 1.5rem;
+		}
+
+		&__theme {
+			right: -1rem;
+		}
+
+		&__colors {
+			right: -5rem;
 		}
 
 		&__content {
