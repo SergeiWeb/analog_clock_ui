@@ -38,7 +38,7 @@ body.dark-theme {
 .clock__theme {
   position: absolute;
   top: -1rem;
-  right: -1rem;
+  right: 0rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -52,11 +52,10 @@ body.dark-theme {
 .clock__colors {
   position: absolute;
   top: -1rem;
-  right: -5rem;
+  right: -2rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  font-size: 1.5em;
   padding: 0.25rem;
   border-radius: 50%;
   -webkit-box-shadow: inset -1px -1px 1px hsla(var(--hue-color), 0%, 100%, 1), inset 1px 1px 1px hsla(var(--hue-color), 30%, 86%, 1);
@@ -354,8 +353,14 @@ button {
     margin-left: auto;
     margin-right: auto;
   }
-  .clock__theme {
+  .clock__theme, .clock__colors {
     font-size: 1.5rem;
+  }
+  .clock__theme {
+    right: -1rem;
+  }
+  .clock__colors {
+    right: -5rem;
   }
   .clock__content {
     -ms-grid-columns: (1fr)[2];
